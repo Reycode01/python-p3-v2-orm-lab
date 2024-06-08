@@ -21,7 +21,16 @@ class TestReview:
         Department.create_table()
         Employee.create_table()
         Review.create_table()
-        assert (CURSOR.execute("SELECT * FROM reviews"))
+
+         # Check if the table exists in the database schema
+        sql = """
+            SELECT name FROM sqlite_master
+            WHERE type='table' AND name='reviews'
+            LIMIT 1
+         """
+        result = CURSOR.execute(sql).fetchone()
+        assert result is not None  # Assert that the table exists
+
 
     def test_drops_table(self):
         '''contains method "drop_table()" that drops table "reviews" if it exists.'''

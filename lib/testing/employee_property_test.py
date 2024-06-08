@@ -58,7 +58,7 @@ class TestEmployeeProperties:
 
     def test_department_property_fk(self):
         with pytest.raises(ValueError):
-            Employee.create("Raha", "Accountant", 7)
+            Employee.create("Raha", "Accountant", 99)
 
     def test_department_property_type(self):
         with pytest.raises(ValueError):
